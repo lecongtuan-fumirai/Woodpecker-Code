@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://woodpecker-ci.org/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Woodpecker CI/CD - Self-Hosted Demo App</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="card">
+        <div class="badge">🚀 Self-Hosted CI/CD Verified</div>
+        <h1>Woodpecker CI Demo App</h1>
+        <p class="subtitle">Ứng dụng Frontend được tự động build & deploy bởi Local Runner</p>
+        
+        <div class="grid">
+          <div class="metric-card">
+            <span class="label">Trạng thái Pipeline</span>
+            <span class="value green">● Sẵn sàng</span>
+          </div>
+          <div class="metric-card">
+            <span class="label">Runner Engine</span>
+            <span class="value">Docker (Local WSL2)</span>
+          </div>
+          <div class="metric-card">
+            <span class="label">Bảo vệ Host</span>
+            <span class="value">Limit: 4 CPU / 4GB RAM</span>
+          </div>
+          <div class="metric-card">
+            <span class="label">Deployment Channel</span>
+            <span class="value">Automated Git Push</span>
+          </div>
+        </div>
+
+        <button id="counter-btn" type="button">Kiểm tra tương tác: <span id="count">0</span> click</button>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

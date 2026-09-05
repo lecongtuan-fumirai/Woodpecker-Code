@@ -1,0 +1,29 @@
+when:
+  - event: [push, manual]
+
+steps:
+  - name: build-frontend
+    image: node:20-alpine
+    commands:
+      - echo ">>> [1/3] Cài đặt dependencies và Build ứng dụng Frontend..."
+      - npm install
+      - npm run build
+      - ls -la dist/
+
+  - name: test-and-verify
+    image: alpine:latest
+    commands:
+      - echo ">>> [2/3] Kiểm tra tính toàn vẹn của bundle sau khi build..."
+      - test -f dist/index.html && echo "✅ dist/index.html tồn tại hợp lệ!"
+      - echo "Kernel: $(uname -s -m)"
+      - echo "CPU Cores khả dụng cho pipeline: $(nproc)"
+
+  - name: pipeline-summary
+    image: alpine:latest
+    commands:
+      - echo "=========================================================="
+      - echo "  🎉 PIPELINE THÀNH CÔNG RỰC RỠ TRÊN LOCAL RUNNER!"
+      - echo "  Commit: ${CI_COMMIT_SHA:0:8}"
+      - echo "  Branch: ${CI_COMMIT_BRANCH}"
+      - echo "  Author: ${CI_COMMIT_AUTHOR}"
+      - echo "=========================================================="
