@@ -142,10 +142,32 @@ body {
 
 .description {
   max-width: 680px;
-  margin: 0 auto 3.5rem;
+  margin: 0 auto 1.5rem;
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--text-muted);
+}
+
+.ghcr-banner {
+  margin-bottom: 3rem;
+}
+
+.ghcr-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #34d399;
+  box-shadow: 0 0 20px -5px rgba(16, 185, 129, 0.2);
+}
+
+.ghcr-pill strong {
+  color: #f8fafc;
 }
 
 /* Pipeline Flow */

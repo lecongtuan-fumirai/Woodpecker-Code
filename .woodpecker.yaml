@@ -47,17 +47,21 @@ steps:
       - trivy fs --scanners secret,vuln --severity CRITICAL --exit-code 0 .
 
   # ----------------------------------------------------------------------------
-  # Stage 4: Docker Container Build (Kaniko Unprivileged Sandbox)
+  # Stage 4: Docker Container Build & Push -> GHCR
   # ----------------------------------------------------------------------------
-  - name: docker-build
+  - name: docker-build-and-push
     image: woodpeckerci/plugin-kaniko
     settings:
-      repo: ${CI_REPO_OWNER}/woodpecker-fe-demo
+      registry: ghcr.io
+      repo: lecongtuan-fumirai/woodpecker-fe-demo
       tags:
         - ${CI_COMMIT_SHA:0:8}
         - latest
       dockerfile: Dockerfile
-      no_push: true
+      username:
+        from_secret: ghcr_username
+      password:
+        from_secret: ghcr_token
 
   # ----------------------------------------------------------------------------
   # Stage 5: Pipeline Completion & Traceability Summary
