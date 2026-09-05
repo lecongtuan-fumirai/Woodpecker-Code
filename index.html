@@ -4,37 +4,163 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="https://woodpecker-ci.org/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Woodpecker CI/CD - Self-Hosted Demo App</title>
+    <title>Woodpecker CI/CD - Self-Hosted Mission Control</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <div id="app">
-      <div class="card">
-        <div class="badge">🚀 Self-Hosted CI/CD Verified</div>
-        <h1>Woodpecker CI Demo App</h1>
-        <p class="subtitle">Ứng dụng Frontend được tự động build & deploy bởi Local Runner</p>
-        
-        <div class="grid">
-          <div class="metric-card">
-            <span class="label">Trạng thái Pipeline</span>
-            <span class="value green">● Sẵn sàng</span>
+    <div class="background-mesh"></div>
+    <div class="container">
+      <!-- Top Navigation -->
+      <header class="navbar">
+        <div class="brand">
+          <div class="logo-icon">🪶</div>
+          <span class="brand-text">WOODPECKER<span class="accent">.CI</span></span>
+        </div>
+        <div class="system-status">
+          <span class="pulse-dot"></span>
+          <span class="status-label">RUNNER: ACTIVE (LOCAL WSL2)</span>
+        </div>
+      </header>
+
+      <!-- Main Hero -->
+      <main class="hero">
+        <div class="badge-pill">
+          <span class="sparkle">✨</span> DevSecOps Zero-Impact Architecture
+        </div>
+        <h1 class="headline">Self-Hosted CI/CD<br/><span class="gradient-text">Mission Control</span></h1>
+        <p class="description">
+          Hệ thống điều phối pipeline tự động hóa hoàn toàn độc lập, gánh tải tác vụ nặng trực tiếp trên phần cứng máy cá nhân mà không làm gián đoạn công việc hàng ngày.
+        </p>
+
+        <!-- Interactive Pipeline Flow -->
+        <section class="pipeline-section">
+          <h2 class="section-title">QUY TRÌNH THỰC THI TỰ ĐỘNG (END-TO-END)</h2>
+          <div class="pipeline-flow" id="pipeline-flow">
+            <div class="step-card active" data-step="1">
+              <div class="step-header">
+                <span class="step-num">01</span>
+                <span class="step-icon">📦</span>
+              </div>
+              <div class="step-name">Git Push</div>
+              <div class="step-sub">GitHub Webhook</div>
+            </div>
+            <div class="connector-line"></div>
+
+            <div class="step-card active" data-step="2">
+              <div class="step-header">
+                <span class="step-num">02</span>
+                <span class="step-icon">🛡️</span>
+              </div>
+              <div class="step-name">Secure Ingress</div>
+              <div class="step-sub">Cloudflare Tunnel</div>
+            </div>
+            <div class="connector-line"></div>
+
+            <div class="step-card active" data-step="3">
+              <div class="step-header">
+                <span class="step-num">03</span>
+                <span class="step-icon">⚡</span>
+              </div>
+              <div class="step-name">Local Agent</div>
+              <div class="step-sub">Woodpecker v3</div>
+            </div>
+            <div class="connector-line"></div>
+
+            <div class="step-card active" data-step="4">
+              <div class="step-header">
+                <span class="step-num">04</span>
+                <span class="step-icon">🐳</span>
+              </div>
+              <div class="step-name">Build & Test</div>
+              <div class="step-sub">Docker Isolated</div>
+            </div>
+            <div class="connector-line"></div>
+
+            <div class="step-card active" data-step="5">
+              <div class="step-header">
+                <span class="step-num">05</span>
+                <span class="step-icon">✅</span>
+              </div>
+              <div class="step-name">Checkmark</div>
+              <div class="step-sub">Green Status Commit</div>
+            </div>
           </div>
-          <div class="metric-card">
-            <span class="label">Runner Engine</span>
-            <span class="value">Docker (Local WSL2)</span>
+        </section>
+
+        <!-- Hardware & Isolation Gauges -->
+        <div class="metrics-grid">
+          <div class="glass-card">
+            <div class="card-header">
+              <span class="card-title">CÔ LẬP CPU (CGROUPS)</span>
+              <span class="tag green">Protected</span>
+            </div>
+            <div class="gauge-display">
+              <div class="gauge-value">4 <span class="unit">Cores Capped</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 33%"></div>
+              </div>
+              <span class="gauge-caption">8 Threads reserved strictly for Windows Host</span>
+            </div>
           </div>
-          <div class="metric-card">
-            <span class="label">Bảo vệ Host</span>
-            <span class="value">Limit: 4 CPU / 4GB RAM</span>
+
+          <div class="glass-card">
+            <div class="card-header">
+              <span class="card-title">CÔ LẬP BỘ NHỚ (RAM)</span>
+              <span class="tag green">Protected</span>
+            </div>
+            <div class="gauge-display">
+              <div class="gauge-value">8 <span class="unit">GB Max</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 25%"></div>
+              </div>
+              <span class="gauge-caption">24 GB RAM reserved for IDE, Dev & Apps</span>
+            </div>
           </div>
-          <div class="metric-card">
-            <span class="label">Deployment Channel</span>
-            <span class="value">Automated Git Push</span>
+
+          <div class="glass-card">
+            <div class="card-header">
+              <span class="card-title">TỰ ĐỘNG DỌN Ổ ĐĨA</span>
+              <span class="tag blue">Auto-Prune</span>
+            </div>
+            <div class="gauge-display">
+              <div class="gauge-value">>660 <span class="unit">GB Free</span></div>
+              <div class="progress-track">
+                <div class="progress-fill emerald" style="width: 70%"></div>
+              </div>
+              <span class="gauge-caption">Auto prune layer cache sau mỗi pipeline</span>
+            </div>
           </div>
         </div>
 
-        <button id="counter-btn" type="button">Kiểm tra tương tác: <span id="count">0</span> click</button>
-      </div>
+        <!-- Interactive Terminal Simulator -->
+        <section class="terminal-section">
+          <div class="terminal-window">
+            <div class="terminal-bar">
+              <div class="dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-title">woodpecker-agent@local-wsl2:~</span>
+              <button id="run-sim-btn" class="action-btn">
+                <span>▶</span> BẮT ĐẦU MÔ PHỎNG RUNNER
+              </button>
+            </div>
+            <div class="terminal-body" id="terminal-output">
+              <div class="line dim">[09:30:00] Woodpecker CI v3.18.0 initialized on local host.</div>
+              <div class="line dim">[09:30:01] Listening for GitHub webhook push events...</div>
+              <div class="line highlight">[09:30:02] Sẵn sàng thực thi. Bấm nút phía trên để kiểm tra tương tác!</div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Designed & Hardened by Senior DevSecOps • 2026 Edition</span>
+      </footer>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>

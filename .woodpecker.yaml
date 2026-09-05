@@ -2,28 +2,64 @@ when:
   - event: [push, manual]
 
 steps:
+  # ==========================================
+  # 1. Build Frontend
+  # ==========================================
   - name: build-frontend
     image: node:20-alpine
     commands:
-      - echo ">>> [1/3] Cài đặt dependencies và Build ứng dụng Frontend..."
+      - echo ">>> [1/4] Cài đặt dependencies và Build Frontend..."
       - npm install
       - npm run build
       - ls -la dist/
 
+  # ==========================================
+  # 2. Verify Build
+  # ==========================================
   - name: test-and-verify
     image: alpine:latest
     commands:
-      - echo ">>> [2/3] Kiểm tra tính toàn vẹn của bundle sau khi build..."
-      - test -f dist/index.html && echo "✅ dist/index.html tồn tại hợp lệ!"
+      - echo ">>> [2/4] Kiểm tra bundle..."
+      - test -f dist/index.html
+      - echo "✅ dist/index.html tồn tại hợp lệ!"
       - echo "Kernel: $(uname -s -m)"
-      - echo "CPU Cores khả dụng cho pipeline: $(nproc)"
+      - echo "CPU Cores: $(nproc)"
 
+  # ==========================================
+  # 3. Build & Push Docker Image → GHCR
+  # ==========================================
+  - name: build-and-push-image
+    image: docker:27-cli
+    environment:
+      GHCR_USERNAME:
+        from_secret: ghcr_username
+      GHCR_TOKEN:
+        from_secret: ghcr_token
+
+    commands:
+      - echo ">>> [3/4] Login vào GHCR..."
+      - echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USERNAME" --password-stdin
+
+      - echo ">>> Build Docker image..."
+      - docker build \
+        -t ghcr.io/$GHCR_USERNAME/my-frontend:${CI_COMMIT_SHA} \
+        -t ghcr.io/$GHCR_USERNAME/my-frontend:latest \
+        .
+
+      - echo ">>> Push image lên GHCR..."
+      - docker push ghcr.io/$GHCR_USERNAME/my-frontend:${CI_COMMIT_SHA}
+      - docker push ghcr.io/$GHCR_USERNAME/my-frontend:latest
+
+  # ==========================================
+  # 4. Summary
+  # ==========================================
   - name: pipeline-summary
     image: alpine:latest
     commands:
       - echo "=========================================================="
-      - echo "  🎉 PIPELINE THÀNH CÔNG RỰC RỠ TRÊN LOCAL RUNNER!"
+      - echo "  🎉 PIPELINE THÀNH CÔNG!"
       - echo "  Commit: ${CI_COMMIT_SHA:0:8}"
       - echo "  Branch: ${CI_COMMIT_BRANCH}"
       - echo "  Author: ${CI_COMMIT_AUTHOR}"
+      - echo "  Image: ghcr.io/${GHCR_USERNAME}/my-frontend:${CI_COMMIT_SHA}"
       - echo "=========================================================="
