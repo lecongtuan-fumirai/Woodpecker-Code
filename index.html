@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="https://woodpecker-ci.org/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Woodpecker CI/CD - Self-Hosted Mission Control</title>
+    <title>GitHub Actions Self-Hosted Runner - Mission Control</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,29 +16,29 @@
       <!-- Top Navigation -->
       <header class="navbar">
         <div class="brand">
-          <div class="logo-icon">🪶</div>
-          <span class="brand-text">WOODPECKER<span class="accent">.CI</span></span>
+          <div class="logo-icon">🚀</div>
+          <span class="brand-text">GITHUB<span class="accent">.ACTIONS</span></span>
         </div>
         <div class="system-status">
           <span class="pulse-dot"></span>
-          <span class="status-label">RUNNER: ACTIVE (LOCAL WSL2)</span>
+          <span class="status-label">SELF-HOSTED RUNNER: ONLINE</span>
         </div>
       </header>
 
       <!-- Main Hero -->
       <main class="hero">
         <div class="badge-pill">
-          <span class="sparkle">✨</span> DevSecOps Zero-Impact Architecture
+          <span class="sparkle">✨</span> GitHub Ecosystem • Zero-Impact Workstation Architecture
         </div>
-        <h1 class="headline">Self-Hosted CI/CD<br/><span class="gradient-text">Mission Control</span></h1>
+        <h1 class="headline">Self-Hosted Runner<br/><span class="gradient-text">Mission Control</span></h1>
         <p class="description">
-          Hệ thống điều phối pipeline tự động hóa hoàn toàn độc lập, gánh tải tác vụ nặng trực tiếp trên phần cứng máy cá nhân mà không làm gián đoạn công việc hàng ngày.
+          Tận dụng toàn bộ sức mạnh của GitHub Actions, kết hợp compute server cá nhân (Self-Hosted Runner) với tài nguyên được giới hạn nghiêm ngặt, tự động đóng gói và xuất bản Docker image lên GitHub Packages (GHCR).
         </p>
 
         <div class="ghcr-banner">
           <div class="ghcr-pill">
             <span class="pulse-dot"></span>
-            <span>Target Registry: <strong>ghcr.io/lecongtuan-fumirai/woodpecker-fe-demo</strong></span>
+            <span>Target Registry: <strong>ghcr.io/lecongtuan-fumirai/woodpecker-code</strong></span>
           </div>
         </div>
 
@@ -52,27 +52,27 @@
                 <span class="step-icon">📦</span>
               </div>
               <div class="step-name">Git Push</div>
-              <div class="step-sub">GitHub Webhook</div>
+              <div class="step-sub">Triggers Workflow</div>
             </div>
             <div class="connector-line"></div>
 
             <div class="step-card active" data-step="2">
               <div class="step-header">
                 <span class="step-num">02</span>
-                <span class="step-icon">🛡️</span>
+                <span class="step-icon">⚡</span>
               </div>
-              <div class="step-name">Secure Ingress</div>
-              <div class="step-sub">Cloudflare Tunnel</div>
+              <div class="step-name">Local Runner</div>
+              <div class="step-sub">WSL2 Self-Hosted</div>
             </div>
             <div class="connector-line"></div>
 
             <div class="step-card active" data-step="3">
               <div class="step-header">
                 <span class="step-num">03</span>
-                <span class="step-icon">⚡</span>
+                <span class="step-icon">🧪</span>
               </div>
-              <div class="step-name">Local Agent</div>
-              <div class="step-sub">Woodpecker v3</div>
+              <div class="step-name">Node Test & Build</div>
+              <div class="step-sub">Node 20 + Vite</div>
             </div>
             <div class="connector-line"></div>
 
@@ -81,18 +81,18 @@
                 <span class="step-num">04</span>
                 <span class="step-icon">🐳</span>
               </div>
-              <div class="step-name">Build & Test</div>
-              <div class="step-sub">Docker Isolated</div>
+              <div class="step-name">Docker Buildx</div>
+              <div class="step-sub">Multi-stage Nginx</div>
             </div>
             <div class="connector-line"></div>
 
             <div class="step-card active" data-step="5">
               <div class="step-header">
                 <span class="step-num">05</span>
-                <span class="step-icon">✅</span>
+                <span class="step-icon">🚀</span>
               </div>
-              <div class="step-name">Checkmark</div>
-              <div class="step-sub">Green Status Commit</div>
+              <div class="step-name">Push GHCR</div>
+              <div class="step-sub">ghcr.io Packages</div>
             </div>
           </div>
         </section>
