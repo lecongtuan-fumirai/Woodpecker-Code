@@ -5,14 +5,13 @@ const stepCards = document.querySelectorAll('.step-card');
 let isRunning = false;
 
 const logSteps = [
-  { text: '>> [Webhook] Nhận tín hiệu Git Push từ GitHub (commit: a9b32e1f, branch: main)', cls: 'highlight', step: 1 },
-  { text: '>> [Tunnel] Tín hiệu đi qua Cloudflare Ingress bảo mật không cần mở port modem', cls: 'dim', step: 2 },
-  { text: '>> [Woodpecker Server] Đưa job vào hàng đợi và phân phối tới Woodpecker Agent...', cls: 'dim', step: 3 },
-  { text: '>> [Agent WSL2] Kích hoạt Docker Sandbox với giới hạn an toàn: 4 CPU Cores, 4GB RAM', cls: 'warn', step: 4 },
-  { text: '>> [Docker Build] node:20-alpine -> Chạy npm install & vite build thành công (1.2s)!', cls: 'highlight', step: 4 },
-  { text: '>> [Integrity Check] dist/index.html tồn tại hợp lệ (3.4 KB)!', cls: 'dim', step: 4 },
-  { text: '>> [Status] Gửi trạng thái Green Checkmark về GitHub Commit: SUCCESS (Passed)!', cls: 'success', step: 5 },
-  { text: '>> [Hoàn tất] Pipeline hoàn thành trong 3.8s. Host Windows mượt mà 100%!', cls: 'success', step: 5 },
+  { text: '>> [GitHub Event] Nhận job "build-test-deploy" từ GitHub Actions queue (branch: main)', cls: 'highlight', step: 1 },
+  { text: '>> [Self-Hosted Runner] Container local-devops-runner nhận kết nối bảo mật qua TLS 443', cls: 'dim', step: 2 },
+  { text: '>> [Runtime Node.js] Cài đặt dependencies và thực thi npm test (Node 20 test runner)', cls: 'dim', step: 3 },
+  { text: '>> [Unit Tests Passed] 2/2 test suite hoàn thành không lỗi. Bắt đầu build web bundle...', cls: 'warn', step: 3 },
+  { text: '>> [Docker Buildx] Đóng gói container ứng dụng (Multi-stage Nginx) tối ưu dung lượng', cls: 'highlight', step: 4 },
+  { text: '>> [Push Registry] Xuất bản image thành công lên ghcr.io/lecongtuan-fumirai/woodpecker-code', cls: 'success', step: 5 },
+  { text: '>> [Pipeline Hoàn tất] Toàn bộ quy trình hoàn thành trong 1m49s! Runner tiếp tục online.', cls: 'success', step: 5 },
 ];
 
 function appendLine(text, cls = '') {
