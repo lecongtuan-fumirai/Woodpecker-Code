@@ -13,3 +13,8 @@ test('App Configuration Test: Package definition valid', () => {
   assert.strictEqual(pkg.name, 'woodpecker-fe-demo');
   assert.ok(pkg.scripts.build, 'build script must be defined');
 });
+
+test('Runner Verification Test: Self-hosted runner ready', () => {
+  assert.ok(true, 'Self-hosted runner pipeline test ready');
+});
+
